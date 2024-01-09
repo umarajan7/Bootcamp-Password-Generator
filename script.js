@@ -89,10 +89,71 @@ var upperCasedCharacters = [
 ];
 
 // Function to prompt user for password options
-function getPasswordOptions() {
-var passord
-  prompt
-}
+function getPasswordOptions() 
+{
+    var passwordLen=0;
+    var error = true;
+      passwordLen= prompt("How many characters would you like in your password? Enter betwen 8 and 128 inclusive");
+      while (error)
+      {
+          if(passwordLen < 8 || passwordLen > 128)
+          {
+            alert("please input a number between 8 and 128.");
+            passwordLen = prompt("How many characters would you like in your password? Enter betwen 8 and 128 inclusive");
+          }
+          else 
+          {
+            error = false;
+            var charType = [{
+              type:"special characters",
+              character: specialCharacters,
+              incl_char_type:false
+            },
+            {
+              type:"numeric characters",
+              character: numericCharacters,
+              incl_char_type:false
+            },
+            {
+              type:"lowercase characters",
+              character: lowerCasedCharacters,
+              incl_char_type:false
+            },
+            {
+              type:"uppercase characters",
+              character: upperCasedCharacters,
+              incl_char_type:false
+            }];
+            var charCheck = false;
+            while (!charCheck) 
+            {
+              // check whether password to include characters as specified
+              for (let i=0; i< charType.length;i++)
+              {
+                charType[i].incl_char_type = confirm("Would you like your password to include " + charType[i].type + "?");
+              };
+              for (let i=0; i<charType.length;i++)
+              {
+                if (charType[i].incl_char_type === true)
+                {
+                  charCheck = true;
+                }
+              };
+              if (!charCheck){
+                alert("Please select at leastone type of character.");
+                }
+            }
+        return 
+        {
+          console.log(passwordLen);
+          console.log(charType);
+          password_length:passwordLen;
+          //charType:  charType ;
+        };
+        }
+      }
+ 
+ }
 
 // Function for getting a random element from an array
 function getRandom(arr) {
@@ -115,5 +176,6 @@ function writePassword() {
   passwordText.value = password;
 }
 
+password = getPasswordOptions();
 // Add event listener to generate button
 generateBtn.addEventListener('click', writePassword);
