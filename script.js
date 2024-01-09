@@ -88,6 +88,10 @@ var upperCasedCharacters = [
   'Z'
 ];
 
+var charactersLength =0;
+var counter = 0;
+var passwordresult ='';
+
 // Function to prompt user for password options
 function getPasswordOptions() 
 {
@@ -103,6 +107,8 @@ function getPasswordOptions()
           }
           else 
           {
+          
+            charactersLength= passwordLen;
             error = false;
             var charType = [{
               type:"special characters",
@@ -139,20 +145,59 @@ function getPasswordOptions()
                   charCheck = true;
                 }
               };
+              // alert the user to enter atleast one type of character
               if (!charCheck){
-                alert("Please select at leastone type of character.");
+                alert("Please select at least one type of character.");
                 }
+            }
+
+            // checks the charType of the user input and use random function to generate the password
+            while (counter < charactersLength)
+            {
+              for (let i=0; i<charType.length;i++)
+              {
+                if (charType[i].incl_char_type === true)
+                {
+                   if (charType[i].type === "uppercase characters")
+                   {
+                   passwordstr = charType[i].character
+                   passwordresult += upperCasedCharacters[Math.Random()* upperCasedCharacters.length-1];
+                   alert("passwordresult :  `${passwordresult}`");
+                  }
+                  if (charType[i].type === "lowercase characters")
+                  {
+                  passwordstr = charType[i].character
+                  passwordresult += lowerCasedCharacters[Math.Random()* lowerCasedCharacters.length-1];
+                  alert("passwordresult :  `${passwordresult}`");
+                 }
+                 if (charType[i].type === "numeric characters")
+                 {
+                 passwordstr = charType[i].character
+                 passwordresult += numericCharacters[Math.Random()* numericCharacters.length-1];
+                 alert("passwordresult :  `${passwordresult}`");
+                }
+                if (charType[i].type === "special characters")
+                {
+                 passwordstr = charType[i].character
+                passwordresult += specialCharacters[Math.Random() * specialCharacters.length-1];
+                alert("passwordresult :  `${passwordresult}`");
+               }
+                }else
+                {
+                alert("passwordresult :  `${passwordresult}`");
+                }
+              };
             }
         return 
         {
-          console.log(passwordLen);
-          console.log(charType);
-          password_length:passwordLen;
-          //charType:  charType ;
+          
+          password_len:passwordLen;
+          char_Types:  charType 
         };
         }
       }
- 
+       var passwordCharacters = [passwordLen];
+       console.log(passwordCharacters);
  }
 
 // Function for getting a random element from an array
@@ -164,18 +209,37 @@ function getRandom(arr) {
 function generatePassword() {
 
 }
+var error = true;
+password = getPasswordOptions();
 
+console.log(password);
+console.log(charType);
+while (error)
+{
+  
+  /*for (var i = 0; i <password.length; i++)
+  {
+    
+    /* if (password.charType.incl_char_type() === true && password.charType(i).charCheck)
+     {
+      console.log password.charType.incl_char_type();
+     } 
+     
+  } */
+  break;
+}
 // Get references to the #generate element
 var generateBtn = document.querySelector('#generate');
 
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
+ 
   var passwordText = document.querySelector('#password');
 
   passwordText.value = password;
 }
 
-password = getPasswordOptions();
+
 // Add event listener to generate button
 generateBtn.addEventListener('click', writePassword);

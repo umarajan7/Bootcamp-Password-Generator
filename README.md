@@ -10,6 +10,7 @@ The password can include special characters. If you’re unfamiliar with these, 
 ## Contents
 
 ### Instructions
+
 ### Installation
 ### Credits
 
@@ -24,12 +25,33 @@ The following image shows the web application's appearance and functionality:
   * Present a series of prompts for password criteria
     * Length of password
       * At least 8 characters but no more than 128.
+
+        ![password generator demo](./assets/total_characters.png)
+      
+      * Error Message should appear if  less than8 characters is selected
+
+        ![password generator demo](./assets/error_message.png)
+
     * Character types
-      * Lowercase
-      * Uppercase
-      * Numeric
-      * Special characters ($@%&*, etc)
+
+    * Lowercase
+
+      ![password generator demo](./assets/lowercase_characters.png)
+
+    * Uppercase 
+
+      ![password generator demo](./assets/uppercase_characters.png)
+ 
+    * Numeric
+   
+      ![password generator demo](./assets/numeric_characters.png)
+
+    * Special characters ($@%&*, etc)
+   
+      ![password generator demo](./assets/special_characters.png)
+    
   * Code should validate for each input and at least one character type should be selected
+  ![password generator demo](./assets/05-javascript-challenge-demo.png)
   * Once prompts are answered then the password should be generated and displayed in an alert or written to the page
 
   ## Grading Requirements
@@ -80,3 +102,11 @@ You are required to submit the following for review:
 * The URL of the deployed application.
 
 * The URL of the GitHub repository. Give the repository a unique name and include a README describing the project.
+
+
+## Installation
+   * Go to the deployed site and run the application.
+
+## Credits
+   * Tutors Help 
+
